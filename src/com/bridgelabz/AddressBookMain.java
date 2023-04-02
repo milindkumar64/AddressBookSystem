@@ -4,7 +4,13 @@ public class AddressBookMain {
 
 	public static void main(String[] args) {
 
-		System.out.println("Welcome to Address Book System : ");
+		Contact person = new Contact();
+		AddressBook addressBook = new AddressBook();
+        
+		//UC1-Adding a New Contact in AddressBook
 
+		addressBook.addContactDetails();
+		addressBook.displayContact();
 	}
+	
 }
