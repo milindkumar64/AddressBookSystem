@@ -124,17 +124,11 @@ public class Contact {
 		email = input.next();
 		this.setEmail(email);
 	}
-	
-	public String toString(){
-        return  "Contact[" +
-                "firstName= " + firstName+ 
-                " ,lastName= " + lastName +
-                " ,address= " + address +
-                " ,city= " + city +
-                " ,state= " + state +
-                " ,zipcode= " + zipCode +
-                " ,phoneNumber= " + phoneNumber +
-                " ,email= " + email +
-                "]";
+
+	public String toString() {
+		System.out.println("toString Method");
+		return "Contact[" + "firstName= " + firstName + " ,lastName= " + lastName + " ,address= " + address + " ,city= "
+				+ city + " ,state= " + state + " ,zipcode= " + zipCode + " ,phoneNumber= " + phoneNumber + " ,email= "
+				+ email + "]";
 	}
 }

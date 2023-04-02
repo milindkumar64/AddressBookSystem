@@ -15,9 +15,10 @@ public class AddressBookMain {
 		//UC3-Edit an Existing Contact in AddressBook using person name
 		
 		addressBook.editContactDetails();
-		addressBook.displayContact();
 		
+		//UC4-Delete an Existing Contact in AddressBook using person name
 		
-	}
-	
+		addressBook.deleteContact();
+		
+	}	
 }
