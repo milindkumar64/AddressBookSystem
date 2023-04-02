@@ -126,7 +126,6 @@ public class Contact {
 	}
 
 	public String toString() {
-		System.out.println("toString Method");
 		return "Contact[" + "firstName= " + firstName + " ,lastName= " + lastName + " ,address= " + address + " ,city= "
 				+ city + " ,state= " + state + " ,zipcode= " + zipCode + " ,phoneNumber= " + phoneNumber + " ,email= "
 				+ email + "]";

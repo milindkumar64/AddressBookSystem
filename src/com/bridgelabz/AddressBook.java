@@ -22,6 +22,7 @@ public class AddressBook extends Contact {
 		person.getPersonDetails();
 
 		contacts.add(person);
+		System.out.println("New Contact has been added");
 	}
 
 	public void editContactDetails() {
