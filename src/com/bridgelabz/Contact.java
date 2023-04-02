@@ -136,5 +136,5 @@ public class Contact {
                 " ,phoneNumber= " + phoneNumber +
                 " ,email= " + email +
                 "]";
-	 }
+	}
 }

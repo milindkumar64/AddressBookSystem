@@ -7,10 +7,17 @@ public class AddressBookMain {
 		Contact person = new Contact();
 		AddressBook addressBook = new AddressBook();
         
-		//UC1-Adding a New Contact in AddressBook
+		//UC2-Adding a New Contact in AddressBook
 
 		addressBook.addContactDetails();
 		addressBook.displayContact();
+		
+		//UC3-Edit an Existing Contact in AddressBook using person name
+		
+		addressBook.editContactDetails();
+		addressBook.displayContact();
+		
+		
 	}
 	
 }
