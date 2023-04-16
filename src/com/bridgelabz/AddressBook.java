@@ -16,58 +16,95 @@ public class AddressBook extends Contact {
 
 	ArrayList<Contact> contacts = new ArrayList<>();
 
-	public void addContactDetails() {
-		System.out.println("Enter details Of A Contact : ");
+	/*
+	 * public void getContactDetails() {
+	 * System.out.println("Enter details Of A Contact : "); Contact person = new
+	 * Contact(); person.getPersonDetails();
+	 * 
+	 * contacts.add(person); System.out.println("New Contact has been added"); }
+	 */
+	public void getContactDetails() {
+		System.out.println("Enter details : ");
 		Contact person = new Contact();
 		person.getPersonDetails();
-
-		contacts.add(person);
-		System.out.println("New Contact has been added");
+		int present = 0;
+		for (Contact contact : contacts) {
+			if (contact.getFirstName().equals(person.getFirstName())) {
+				present = 1;
+				System.out.println("Person already exist");
+				break;
+			}
+		}
+		if (present == 0) {
+			contacts.add(person);
+		}
 	}
 
-	public void editContactDetails() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter person name to edit : ");
-		String name = sc.next();
+	/*
+	 * public void editPersonDetails() { Scanner sc = new Scanner(System.in);
+	 * System.out.println("Enter person name to edit : "); String name = sc.next();
+	 * 
+	 * for (Contact person : contacts) { if (person.getFirstName().equals(name)) {
+	 * System.out.println("Enter the option to edit : "); System.out.println(
+	 * "1.Firstname 2.Lastname  3.Address  4.City  5.State  6.Zipcode  7.Phone number  8.Email  9.Exit"
+	 * ); int choice = sc.nextInt(); switch (choice) { case 1:
+	 * System.out.println("Changing First name : "); person.setFirstName(sc.next());
+	 * break; case 2: System.out.println("Changing last name : ");
+	 * person.setLastName(sc.next()); break; case 3:
+	 * System.out.println("Changing address : "); person.setAddress(sc.next());
+	 * break; case 4: System.out.println("Changing city : ");
+	 * person.setCity(sc.next()); break; case 5:
+	 * System.out.println("Changing state : "); person.setState(sc.next()); break;
+	 * case 6: System.out.println("Changing zipcode : ");
+	 * person.setZipCode(sc.nextInt()); break; case 7:
+	 * System.out.println("Changing phone number: ");
+	 * person.setPhoneNumber(sc.nextInt()); break; case 8:
+	 * System.out.println("Changing email : "); person.setEmail(sc.next()); break;
+	 * case 9: System.out.println("Exiting from edit operation"); break; } } } }
+	 */
 
+	public void editPersonDetails() {
+		Scanner input1 = new Scanner(System.in);
+		System.out.println("Enter name to edit : ");
+		String name = input1.next();
 		for (Contact person : contacts) {
 			if (person.getFirstName().equals(name)) {
-				System.out.println("Enter the option to edit : ");
+				System.out.println("Enter the option to edit");
 				System.out.println(
-						"1.Firstname 2.Lastname  3.Address  4.City  5.State  6.Zipcode  7.Phone number  8.Email  9.Exit");
-				int choice = sc.nextInt();
+						"1.Firstname\t 2.Lastname\t 3.Address\t 4.City\t 5.State\t 6.Zipcode\t 7.Phone number\t 8.Email\t 9.Exit");
+				int choice = input1.nextInt();
 				switch (choice) {
 				case 1:
 					System.out.println("Changing First name : ");
-					person.setFirstName(sc.next());
+					person.setFirstName(input1.next());
 					break;
 				case 2:
 					System.out.println("Changing last name : ");
-					person.setLastName(sc.next());
+					person.setLastName(input1.next());
 					break;
 				case 3:
 					System.out.println("Changing address : ");
-					person.setAddress(sc.next());
+					person.setAddress(input1.next());
 					break;
 				case 4:
 					System.out.println("Changing city : ");
-					person.setCity(sc.next());
+					person.setCity(input1.next());
 					break;
 				case 5:
 					System.out.println("Changing state : ");
-					person.setState(sc.next());
+					person.setState(input1.next());
 					break;
 				case 6:
 					System.out.println("Changing zipcode : ");
-					person.setZipCode(sc.nextInt());
+					person.setZipCode(input1.nextInt());
 					break;
 				case 7:
 					System.out.println("Changing phone number: ");
-					person.setPhoneNumber(sc.nextInt());
+					person.setPhoneNumber(input1.nextInt());
 					break;
 				case 8:
 					System.out.println("Changing email : ");
-					person.setEmail(sc.next());
+					person.setEmail(input1.next());
 					break;
 				case 9:
 					System.out.println("Exiting from edit operation");
@@ -77,16 +114,24 @@ public class AddressBook extends Contact {
 		}
 	}
 
+	/*
+	 * public void deleteContact() { Scanner sc = new Scanner(System.in);
+	 * System.out.println(contacts);
+	 * System.out.println("Enter Person Name to delete : "); String name =
+	 * sc.next(); for (Contact person : contacts) { if
+	 * (person.getFirstName().equals(name)) { contacts.remove(person);
+	 * System.out.println("Contact deleted successfully !!!"); break; } } }
+	 */
 	public void deleteContact() {
-		Scanner sc = new Scanner(System.in);
+		Scanner input1 = new Scanner(System.in);
 		System.out.println(contacts);
-		System.out.println("Enter Person Name to delete : ");
-		String name = sc.next();
+		System.out.println("Enter name to delete : ");
+		String name = input1.next();
 		for (Contact person : contacts) {
 			if (person.getFirstName().equals(name)) {
 				contacts.remove(person);
 				System.out.println("Contact deleted successfully !!!");
-				break;
+				return;
 			}
 		}
 	}
