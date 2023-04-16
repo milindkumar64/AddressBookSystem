@@ -18,6 +18,7 @@ public class AddressBook extends Contact {
 
 	ArrayList<Contact> contacts = new ArrayList<>();
 	HashMap<String, Contact> contactHashMap = new HashMap<>();
+	HashMap<String, Contact> contactHashMap2 = new HashMap<>();
 
 	public void getContactDetails() {
 		System.out.println("Enter details : ");
@@ -121,6 +122,20 @@ public class AddressBook extends Contact {
 		contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
 		System.out.println(contactHashMap.keySet());
 		System.out.println("Number of persons of same City : " + count);
+	}
+
+	public void searchByStateName(String stateName, String personName) {
+		for (Contact contact : contacts) {
+			if (contact.getState().equals(stateName)) {
+				contactHashMap2.put(stateName, contact);
+			}
+		}
+		Predicate<Contact> contactPredicate = t -> t.getState().equals(stateName);
+		Predicate<Contact> contactPredicate1 = t -> t.getFirstName().equals(personName);
+		contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
+		long count = contacts.stream().filter(contactPredicate1).count();
+		System.out.println(contactHashMap2.keySet());
+		System.out.println("Number of persons of same name are : " + count);
 	}
 
 }

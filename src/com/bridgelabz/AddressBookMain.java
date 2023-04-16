@@ -103,6 +103,20 @@ public class AddressBookMain {
                 }
                 else {
                     System.out.println("Address Book does not exist");
+                } break;
+            case 8 :
+                System.out.println("Enter name of address book in which you want to search contact by state name : ");
+                String addressBookName6 = input.next();
+                if(dictionary.containsKey(addressBookName6)){
+                    System.out.println("Enter name of State : ");
+                    String stateName = input.next();
+                    AddressBook addressBook = dictionary.get(addressBookName6);
+                    System.out.println("Enter a person's name : ");
+                    String personName = input.next();
+                    addressBook.searchByStateName(stateName,personName) ;
+                }
+                else {
+                    System.out.println("Address Book does not exist");
                 }
 			}
 		} while (option != 10);
