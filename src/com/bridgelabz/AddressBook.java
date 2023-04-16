@@ -1,7 +1,9 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class AddressBook extends Contact {
 
@@ -15,6 +17,7 @@ public class AddressBook extends Contact {
 	}
 
 	ArrayList<Contact> contacts = new ArrayList<>();
+	HashMap<String, Contact> contactHashMap = new HashMap<>();
 
 	public void getContactDetails() {
 		System.out.println("Enter details : ");
@@ -103,4 +106,21 @@ public class AddressBook extends Contact {
 			System.out.println(contact);
 		}
 	}
+
+	public void searchByCityName(String cityName, String personName) {
+		int count = 0;
+		for (Contact contact : contacts) {
+			if (contact.getCity().equals(cityName)) {
+				contactHashMap.put(cityName, contact);
+			}
+			if (contact.getFirstName().equals(personName)) {
+				count += 1;
+			}
+		}
+		Predicate<Contact> contactPredicate = t -> t.getCity().equals(cityName);
+		contacts.stream().filter(contactPredicate).forEach(x -> System.out.println(x));
+		System.out.println(contactHashMap.keySet());
+		System.out.println("Number of persons of same City : " + count);
+	}
+
 }

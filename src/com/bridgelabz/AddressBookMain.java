@@ -89,6 +89,21 @@ public class AddressBookMain {
 					AddressBook addressBook = new AddressBook();
 					dictionary.put(addressBookName4, addressBook);
 				}
+				break;
+            case 7 :
+                System.out.println("Enter name of address book in which you want to search contact by city name : ");
+                String addressBookName5 = input.next();
+                if(dictionary.containsKey(addressBookName5)){
+                    System.out.println("Enter name of city : ");
+                    String cityName = input.next();
+                    AddressBook addressBook = dictionary.get(addressBookName5);
+                    System.out.println("Enter a person's name : ");
+                    String personName = input.next();
+                    addressBook.searchByCityName(cityName,personName) ;
+                }
+                else {
+                    System.out.println("Address Book does not exist");
+                }
 			}
 		} while (option != 10);
 	}
