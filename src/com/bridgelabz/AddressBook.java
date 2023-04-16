@@ -130,16 +130,15 @@ public class AddressBook {
 		System.out.println(contactHashMap2.keySet());
 		System.out.println("Number of persons of same name are : " + count);
 	}
-	
-	 public void sortByCity(){
-	        Comparator<Contact> contactComparable = (a, b) -> a.compareTo(b);
-	        contacts.stream().sorted(contactComparable).forEach(x -> System.out.println(x));
-	    }
-	 @Override
-	    public String toString() {
-	        return "AddressBook{" +
-	                "contacts=" + contacts +
-	                '}';
-	    }
+
+	public void sortByCity() {
+		Comparator<Contact> contactComparable = (a, b) -> a.compareTo(b);
+		contacts.stream().sorted(contactComparable).forEach(x -> System.out.println(x));
+	}
+
+	@Override
+	public String toString() {
+		return "AddressBook{" + "contacts=" + contacts + '}';
+	}
 
 }

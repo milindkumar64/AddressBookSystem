@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Contact  implements Comparable {
+public class Contact implements Comparable {
 
 	String firstName, lastName, address, city, state;
 	int zipCode;
@@ -153,4 +153,5 @@ public class Contact  implements Comparable {
 		int compareResult = this.city.compareTo(contact.city);
 		return compareResult;
 	}
+	
 }

@@ -133,8 +133,7 @@ public class AddressBookMain {
 			case 10:
 				System.out.println("Exiting from dictionary");
 				break;
-			}
-			
+			}			
 		} while (option != 10);
 	}
 }
