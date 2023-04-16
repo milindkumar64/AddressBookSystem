@@ -10,7 +10,7 @@ public class AddressBookMain {
 		HashMap<String, AddressBook> dictionary = new HashMap<>();
 		AddressBook book = new AddressBook();
 		Scanner input = new Scanner(System.in);
-		
+
 		int option;
 		do {
 			System.out.println("Options are : ");
@@ -118,7 +118,23 @@ public class AddressBookMain {
 				} else {
 					System.out.println("Address Book does not exist");
 				}
+				break;
+			case 9:
+				System.out.println("Enter name of address book in which you want to sort contact by city : ");
+				String addressBookName7 = input.next();
+				if (dictionary.containsKey(addressBookName7)) {
+					System.out.println(addressBookName7 + " Address book exist.");
+					AddressBook addressBook = dictionary.get(addressBookName7);
+					addressBook.sortByCity();
+				} else {
+					System.out.println("Address Book does not exist");
+				}
+				break;
+			case 10:
+				System.out.println("Exiting from dictionary");
+				break;
 			}
+			
 		} while (option != 10);
 	}
 }
