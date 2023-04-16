@@ -5,19 +5,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
-
 public class AddressBook {
 
-	public AddressBook(String firstName, String lastName, String address, String city, String state, int zipCode,
-			long phoneNumber, String email) {
-		super(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
-
-	}
-
-	public AddressBook() {
-	}
-
 	ArrayList<Contact> contacts = new ArrayList<>();
+
 	HashMap<String, Contact> contactHashMap = new HashMap<>();
 	HashMap<String, Contact> contactHashMap2 = new HashMap<>();
 

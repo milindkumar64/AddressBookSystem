@@ -10,7 +10,6 @@ public class AddressBookMain {
 		HashMap<String, AddressBook> dictionary = new HashMap<>();
 		AddressBook book = new AddressBook();
 		Scanner input = new Scanner(System.in);
-
 		
 		int option;
 		do {
