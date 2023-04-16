@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
-public class AddressBook extends Contact {
+
+public class AddressBook {
 
 	public AddressBook(String firstName, String lastName, String address, String city, String state, int zipCode,
 			long phoneNumber, String email) {
