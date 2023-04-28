@@ -1,14 +1,17 @@
 package com.bridgelabz;
 
+import java.io.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.util.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import com.opencsv.CSVWriter;
 
 public class AddressBookMain {
 
@@ -140,20 +143,43 @@ public class AddressBookMain {
 			case 10:
 				System.out.println("Exiting from dictionary");
 				break;
-			}			
+			}
 		} while (option != 10);
-		Path path = Paths.get("E:\\Notepad++ java code\\Eclipse Workspace\\AddressBookSystem\\src\\com\\bridgelabz\\AddressBook.txt");
-        try {
-            Files.deleteIfExists(path);
-            Files.write(path,
-                    dictionary.keySet().stream().map(key -> dictionary.get(key).toString()).collect(Collectors.toList()),
-                    StandardOpenOption.CREATE);
+		Path path = Paths.get(
+				"E:\\Notepad++ java code\\Eclipse Workspace\\AddressBookSystem\\src\\com\\bridgelabz\\AddressBook.txt");
+		try {
+			Files.deleteIfExists(path);
+			Files.write(path, dictionary.keySet().stream().map(key -> dictionary.get(key).toString())
+					.collect(Collectors.toList()));
+			// StandardOpenOption.CREATE
 
-            List<String> readAllLines = Files.readAllLines(path);
-            readAllLines.stream().forEach(line -> System.out.println(line));
+			List<String> readAllLines = Files.readAllLines(path);
+			readAllLines.stream().forEach(line -> System.out.println(line));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+			// writing inside CSV file
+			
+			FileWriter outputfile = new FileWriter(
+					"E:\\Notepad++ java code\\Eclipse Workspace\\AddressBookSystem\\src\\com\\bridgelabz\\AddressBookcsv.csv");
+			CSVWriter writer = new CSVWriter(outputfile);
+			Object[] arrayAddressBookObj = new String[dictionary.values().size()];
+			Set keySet = dictionary.keySet();
+			Iterator itr = keySet.iterator();
+			while (itr.hasNext()) {
+				String key = (String) itr.next();
+				System.out.println(key);
+				AddressBook obj = dictionary.get(key);
+				for (Contact con : obj.contacts) {
+					String[] arr = { con.getFirstName(), con.getLastName(), con.getCity(), con.getAddress(),
+							con.getState(), String.valueOf(con.getZipCode()), String.valueOf(con.getPhoneNumber()),
+							con.getEmail() };
+					writer.writeNext(arr);
+				}
+			}
+			writer.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
