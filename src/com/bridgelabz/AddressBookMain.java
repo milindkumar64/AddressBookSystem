@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import com.google.gson.Gson;
 import com.opencsv.CSVWriter;
 
 public class AddressBookMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		HashMap<String, AddressBook> dictionary = new HashMap<>();
 		AddressBook book = new AddressBook();
@@ -157,7 +158,7 @@ public class AddressBookMain {
 			readAllLines.stream().forEach(line -> System.out.println(line));
 
 			// writing inside CSV file
-			
+
 			FileWriter outputfile = new FileWriter(
 					"E:\\Notepad++ java code\\Eclipse Workspace\\AddressBookSystem\\src\\com\\bridgelabz\\AddressBookcsv.csv");
 			CSVWriter writer = new CSVWriter(outputfile);
@@ -166,7 +167,7 @@ public class AddressBookMain {
 			Iterator itr = keySet.iterator();
 			while (itr.hasNext()) {
 				String key = (String) itr.next();
-				System.out.println(key);
+				// System.out.println(key);
 				AddressBook obj = dictionary.get(key);
 				for (Contact con : obj.contacts) {
 					String[] arr = { con.getFirstName(), con.getLastName(), con.getCity(), con.getAddress(),
@@ -180,5 +181,26 @@ public class AddressBookMain {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		// Writing on Json Files
+
+		Gson gson = new Gson();
+		BufferedWriter bw = new BufferedWriter(new FileWriter(
+				"E:\\Notepad++ java code\\Eclipse Workspace\\AddressBookSystem\\src\\com\\bridgelabz\\AddressBookjson.json"));
+		Object[] arrayAddressBookObj = new String[dictionary.values().size()];
+		Set keySet = dictionary.keySet();
+		Iterator itr = keySet.iterator();
+		while (itr.hasNext()) {
+			String key = (String) itr.next();
+			System.out.println(key);
+			AddressBook obj = dictionary.get(key);
+			for (Contact con : obj.contacts) {
+
+				String json = gson.toJson(con);
+
+				bw.write(json);
+			}
+		}
+		bw.close();
 	}
 }
