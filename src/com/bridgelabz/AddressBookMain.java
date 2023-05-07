@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,7 @@ import com.opencsv.CSVWriter;
 
 public class AddressBookMain {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
 
 		HashMap<String, AddressBook> dictionary = new HashMap<>();
 		AddressBook book = new AddressBook();
@@ -202,5 +204,8 @@ public class AddressBookMain {
 			}
 		}
 		bw.close();
+		
+		Connection con = DataBaseConnection.setup();
+		DataBaseConnection.retrieveEmployeePayrollData(con);
 	}
 }
