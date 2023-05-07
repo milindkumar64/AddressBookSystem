@@ -47,6 +47,12 @@ public class DataBaseConnection {
 		PreparedStatement ps = con.prepareStatement(query);
 		int i = ps.executeUpdate();
 		System.out.println("Data updated in " + i + " row affected ");
-
+	}
+	
+	public static void retrieveNumberOfContactsByCity(Connection con) throws SQLException {
+		String query = "select count(city) from address_book where city = 'jaipur' group by city";
+		PreparedStatement ps = con.prepareStatement(query);
+        int i = ps.executeUpdate();
+		System.out.println("number of contacts belongs to jaipur is : " + i);
 	}
 }

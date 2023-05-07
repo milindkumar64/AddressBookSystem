@@ -209,5 +209,7 @@ public class AddressBookMain {
 		DataBaseConnection.retrieveEmployeePayrollData(con);
 
 		DataBaseConnection.updateContactInformation(con);
+		
+		DataBaseConnection.retrieveNumberOfContactsByCity(con);
 	}
 }
