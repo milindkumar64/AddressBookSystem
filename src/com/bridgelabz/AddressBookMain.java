@@ -207,5 +207,7 @@ public class AddressBookMain {
 		
 		Connection con = DataBaseConnection.setup();
 		DataBaseConnection.retrieveEmployeePayrollData(con);
+
+		DataBaseConnection.updateContactInformation(con);
 	}
 }
