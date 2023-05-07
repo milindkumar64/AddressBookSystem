@@ -211,5 +211,7 @@ public class AddressBookMain {
 		DataBaseConnection.updateContactInformation(con);
 		
 		DataBaseConnection.retrieveNumberOfContactsByCity(con);
+		
+		DataBaseConnection.addNewContacts(con);
 	}
 }

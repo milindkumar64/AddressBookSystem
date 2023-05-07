@@ -55,4 +55,14 @@ public class DataBaseConnection {
         int i = ps.executeUpdate();
 		System.out.println("number of contacts belongs to jaipur is : " + i);
 	}
+	
+	public static void addNewContacts(Connection con) throws SQLException {
+		System.out.println("Inserting new Contact in addres_book table ");
+		String query = "insert into address_book ('1','Ram charan','NA','Friend','Hyderabad','Hyderabad','TS','123446','0987654321','rc@gmail.com')";
+		PreparedStatement ps = con.prepareStatement(query);
+        int i = ps.executeUpdate();
+        System.out.println("Data updated in " + i + " row affected ");
+        
+        
+	}
 }
